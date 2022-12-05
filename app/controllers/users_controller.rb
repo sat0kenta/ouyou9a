@@ -26,7 +26,7 @@ class UsersController < ApplicationController
        render "edit"
     end
   end
-  
+
   private
 
   def user_params
