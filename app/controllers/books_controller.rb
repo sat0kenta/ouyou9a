@@ -10,6 +10,10 @@ class BooksController < ApplicationController
     @user = @book.user
     @book_comments = @book.book_comments
     @book_comment = BookComment.new
+    
+  unless ViewCount.find_by(user_id: current_user.id, book_id: @book.id)
+    current_user.view_counts.create(book_id: @book.id)
+  end
   end
 
   def index
@@ -63,10 +67,9 @@ class BooksController < ApplicationController
     params.require(:book).permit(:title, :body)
   end
 
-    def ensure_correct_user
+  def correct_user
     @book = Book.find(params[:id])
-    unless @book.user == current_user
-      redirect_to books_path
-    end
-    end
+    @user = @book.user
+    redirect_to(books_path) unless @user == current_user
+  end
 end
