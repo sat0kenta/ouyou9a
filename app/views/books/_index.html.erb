@@ -8,6 +8,7 @@
     </tr>
   </thead>
   <tbody>
+
     <% books.each do |book| %>
       <tr>
         <td>
@@ -22,7 +23,7 @@
      <%= render "favorites/favorites", book: book %></td>
 
     <td>コメント数：<%= book.book_comments.count %></td>
-    
+
     <td class="view-count">閲覧数: <%= book.view_counts.count %></td>
 
       </tr>

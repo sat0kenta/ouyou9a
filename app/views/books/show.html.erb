@@ -21,15 +21,16 @@
             <td><%= link_to 'Edit', edit_book_path(@book), class: "btn btn-sm btn-success" %></td>
             <td><%= link_to 'Destroy', @book, method: :delete, data: { confirm: '本当に消しますか？' }, class: "btn btn-sm btn-danger"%></td>
             <% end %>
-            
+
         <td id="favorite_buttons_<%= @book.id %>">
           <%= render "favorites/favorites", book: @book %></td>
-          
+
       <td>コメント件数：<%= @book.book_comments.count %></td>
-      
+
       <td class="view-count">閲覧数: <%= @book.view_counts.count %></td>
           </tr>
-   </table
+   </table>
+
       <div id="comments-index">
         <%= render "book_comments/index", book: @book %>
       </div>
